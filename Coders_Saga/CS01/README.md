@@ -97,7 +97,7 @@ None
 
 ## Running Your Program
 ---
-You may clone this repository or download [cs01_test.py]() to get started.
+You may clone this repository or download [cs01_test.py](https://github.com/SKE19/Arcode/blob/main/Coders_Saga/CS01/cs01_test.py) to get started.
 
 - Create a new file named **cs01.py** with **cs01_test.py** in your working directory.
 - Copy the template below to **cs01.py** and start coding!
