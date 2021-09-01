@@ -1,4 +1,4 @@
-### Coder's Saga, Pt. I: One True Hero
+## Coder's Saga, Pt. I: One True Hero
 
 ---
 
@@ -6,15 +6,11 @@
 
 *Puzzle by [GToidZ](https://github.com/GToidZ)*
 
-<br>
-
-#### Introduction
+### Introduction
 
 The world is doomed to fall into the hands of Lord Buggertron, King of all Glitchers and what the world needs now is a "hero!" But, who would be a hero suitable for this task? Though everyone can beat little Glitchers but the gatekeeper of the first dungeon, Errormancer will always beat heroes with random powers. He is the first obstacle and must be defeated to get to Lord Buggertron!
 
-<br><br>
-
-#### Objective
+### Objective
 
 Write a program that will find a suitable hero for a task to defeat the Errormancer.
 
@@ -54,21 +50,17 @@ def find_hero(attribute, score):
 
 **The program does not need to print anything, the wizard will only use `find_hero` function.**
 
-<br><br>
-
-#### Input Constraints
+### Input Constraints
 
 - 1 <= `n` <= 999 ; Number of heroes enlisted, for the next `n` lines.
 - When enlisting a hero, `a,b,c,d` each of them is not more than 30.
 - The names will never be the same and starts with a capital letter.
 
-#### Hints
+### Hints
 
 - If a hero tries to enlist with a stat that exceeded the maximum of 30, he or she might be a monster in disguise, he or she shouldn't be in the list.
 
-<br><br>
-
-##### Sample Test Cases (find_hero parameters are randomized in test cases.)
+### Sample Test Cases (find_hero parameters are randomized in test cases.)
 
 ```python
 
@@ -101,9 +93,9 @@ def find_hero(attribute, score):
 None
 ```
 
-<br><br><br>
+<br>
 
-### Running Your Program
+## Running Your Program
 ---
 You may clone this repository or download [cs01_test.py]() to get started.
 
