@@ -123,7 +123,7 @@ def find_hero(attribute, score):
     for _ in range(n):
 		...
 
-	return None # When there are no heroes suitable for the task, the land may need to wait another day.
+    return None # When there are no heroes suitable for the task, the land may need to wait another day.
 ```
 
 ```console
