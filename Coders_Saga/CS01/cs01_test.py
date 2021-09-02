@@ -1,3 +1,117 @@
-import base64
-code = """JycnVGVzdGVyIGZvciBDUzAxJycnDQpmcm9tIHJhbmRvbSBpbXBvcnQgcmFuZGludA0KaW1wb3J0IHVuaXR0ZXN0DQpmcm9tIHVuaXR0ZXN0Lm1vY2sgaW1wb3J0IHBhdGNoDQpmcm9tIGl0ZXJ0b29scyBpbXBvcnQgY2hhaW4NCg0KaW1wb3J0IGNzMDEgYXMgY3MNCg0KZiA9IG9wZW4oJ2RpY3QudHh0JywgJ3InKQ0KbmFtZXMgPSBmLnJlYWRsaW5lcygpDQpmLmNsb3NlKCkNCg0KZGVmIGdlbmVyYXRlX2Vycm9ybWFuY2VyKCk6DQogICAgcmV0dXJuIHJhbmRpbnQoMSw0KSwgcmFuZGludCgxLDMwKQ0KDQpkZWYgdmFsaWRhdGVfZmluZF9oZXJvKGhlcm9lcywgYXR0ciwgc2NvcmUpOg0KICAgIHZhbGlkID0gW10NCiAgICBmb3IgaGVybyBpbiBoZXJvZXM6DQogICAgICAgIGlmIGhlcm9lc1toZXJvXVthdHRyLTFdID49IHNjb3JlOg0KICAgICAgICAgICAgaWYgbm90IGhlcm9lc1toZXJvXVthdHRyLTFdID4gMzA6DQogICAgICAgICAgICAgICAgdmFsaWQuYXBwZW5kKGhlcm8pDQogICAgaWYgdmFsaWQgPT0gW106DQogICAgICAgIHJldHVybiBOb25lDQogICAgcmV0dXJuIHZhbGlkDQoNCmRlZiBsaXN0X21vbnN0ZXJzKGhlcm9lcyk6DQogICAgbW9uc3RlcnMgPSBbXQ0KICAgIGZvciBoZXJvIGluIGhlcm9lczoNCiAgICAgICAgZm9yIGF0dHJpYiBpbiBoZXJvZXNbaGVyb106DQogICAgICAgICAgICBpZiBpbnQoYXR0cmliKSA+PSAzMToNCiAgICAgICAgICAgICAgICBtb25zdGVycy5hcHBlbmQoaGVybykNCiAgICBpZiBtb25zdGVycyA9PSBOb25lOg0KICAgICAgICByZXR1cm4gWzBdDQogICAgcmV0dXJuIG1vbnN0ZXJzDQoNCmRlZiBnZW5fY2hhcigpOg0KICAgIHJldHVybiBuYW1lcy5wb3AocmFuZGludCgxLGxlbihuYW1lcykpLTEpLnJlbW92ZXN1ZmZpeCgnXG4nKSwgW3JhbmRpbnQoMSwzMCksIHJhbmRpbnQoMSwzMCksIHJhbmRpbnQoMSwzMCksIHJhbmRpbnQoMSwzMCldDQoNCmRlZiBtYWtlX2NoYXJfbGlzdChudW1iZXIpOg0KICAgIGNoYXJhY3RlcnMgPSBkaWN0KCkNCiAgICBpZiBudW1iZXIgPCAxOg0KICAgICAgICByZXR1cm4gTm9uZQ0KICAgIGZvciBfIGluIHJhbmdlKG51bWJlcik6DQogICAgICAgIG5hbWUsIHN0YXRzID0gZ2VuX2NoYXIoKQ0KICAgICAgICBjaGFyYWN0ZXJzW25hbWVdID0gc3RhdHMNCiAgICByZXR1cm4gY2hhcmFjdGVycw0KDQpkZWYgY29udmVydF90b19saXN0KGVudHJpZXMpOg0KICAgIGZpbmFsX2xpc3QgPSBbXQ0KICAgIGZvciBlbnRyeSBpbiBlbnRyaWVzOg0KICAgICAgICBzID0gZW50cnkgKyAnLCcgKyAnLCcuam9pbihzdHIoeCkgZm9yIHggaW4gZW50cmllc1tlbnRyeV0pDQogICAgICAgIGZpbmFsX2xpc3QuYXBwZW5kKHMpDQogICAgcmV0dXJuIGZpbmFsX2xpc3QNCg0KIiIiIGhlcm9lcyA9IG1ha2VfY2hhcl9saXN0KDEwKQ0KYXR0ciwgc2NvcmUgPSBnZW5lcmF0ZV9lcnJvcm1hbmNlcigpDQpwcmludCh2YWxpZGF0ZV9maW5kX2hlcm8oaGVyb2VzLCBhdHRyLCBzY29yZSkpDQpjb252ZXJ0X3RvX2xpc3QoaGVyb2VzKSAiIiINCg0KY2xhc3MgVGVzdENvZGVyU2FnYSh1bml0dGVzdC5UZXN0Q2FzZSk6DQogICAgDQogICAgZGVmIF9faW5pdF9fKHNlbGYsICphcmdzLCAqKmt3YXJncyk6DQogICAgICAgIHN1cGVyKFRlc3RDb2RlclNhZ2EsIHNlbGYpLl9faW5pdF9fKCphcmdzLCAqKmt3YXJncykNCg0KICAgICAgICBzZWxmLmhlcm9lc19vbmUgPSBtYWtlX2NoYXJfbGlzdCgxMCkNCiAgICAgICAgc2VsZi5oZXJvZXNfdHdvID0gbWFrZV9jaGFyX2xpc3QoMTApDQogICAgICAgIHNlbGYuaGVyb2VzX3R3by51cGRhdGUoTm90QU1vbnN0ZXIgPSBbMzEsMzEsMzEsMzFdKQ0KICAgICAgICBzZWxmLmhlcm9lc190aHJlZSA9IG1ha2VfY2hhcl9saXN0KDk5OSkNCiAgICAgICAgc2VsZi5oZXJvZXNfZm91ciA9IG1ha2VfY2hhcl9saXN0KDk5OCkNCiAgICAgICAgc2VsZi5oZXJvZXNfZm91ci51cGRhdGUoRGVtb25Mb3JkID0gWzEwMCwgMTAwLCAxMDAsIDEwMF0pDQogICAgICAgIA0KICAgICAgICBzZWxmLmNhc2Vfb25lX2lucHV0ID0gbGlzdChjaGFpbihbJzEwJ10sIGNvbnZlcnRfdG9fbGlzdChzZWxmLmhlcm9lc19vbmUpKSkNCiAgICAgICAgc2VsZi5jYXNlX3R3b19pbnB1dCA9IGxpc3QoY2hhaW4oWycxMSddLCBjb252ZXJ0X3RvX2xpc3Qoc2VsZi5oZXJvZXNfdHdvKSkpDQogICAgICAgIHNlbGYuY2FzZV90aHJlZV9pbnB1dCA9IGxpc3QoY2hhaW4oWyc5OTknXSwgY29udmVydF90b19saXN0KHNlbGYuaGVyb2VzX3RocmVlKSkpDQogICAgICAgIHNlbGYuY2FzZV9mb3VyX2lucHV0ID0gbGlzdChjaGFpbihbJzk5OSddLCBjb252ZXJ0X3RvX2xpc3Qoc2VsZi5oZXJvZXNfZm91cikpKQ0KDQogICAgICAgIHNlbGYuY2FzZV9vbmVfYXR0ciwgc2VsZi5jYXNlX29uZV9zY29yZSA9IGdlbmVyYXRlX2Vycm9ybWFuY2VyKCkNCiAgICAgICAgc2VsZi5jYXNlX3R3b19hdHRyLCBzZWxmLmNhc2VfdHdvX3Njb3JlID0gZ2VuZXJhdGVfZXJyb3JtYW5jZXIoKQ0KICAgICAgICBzZWxmLmNhc2VfdGhyZWVfYXR0ciwgc2VsZi5jYXNlX3RocmVlX3Njb3JlID0gZ2VuZXJhdGVfZXJyb3JtYW5jZXIoKQ0KICAgICAgICBzZWxmLmNhc2VfZm91cl9hdHRyLCBzZWxmLmNhc2VfZm91cl9zY29yZSA9IGdlbmVyYXRlX2Vycm9ybWFuY2VyKCkNCg0KICAgIGRlZiB0ZXN0X29uZShzZWxmKToNCiAgICAgICAgd2l0aCBwYXRjaCgnYnVpbHRpbnMuaW5wdXQnLCBzaWRlX2VmZmVjdD1zZWxmLmNhc2Vfb25lX2lucHV0KToNCiAgICAgICAgICAgIGFucyA9IGNzLmZpbmRfaGVybyhzZWxmLmNhc2Vfb25lX2F0dHIsIHNlbGYuY2FzZV9vbmVfc2NvcmUpDQogICAgICAgICAgICBtb25zdGVycyA9IGxpc3RfbW9uc3RlcnMoc2VsZi5oZXJvZXNfb25lKQ0KICAgICAgICAgICAgc2VsZi5hc3NlcnRFcXVhbChhbnMsIHZhbGlkYXRlX2ZpbmRfaGVybyhzZWxmLmhlcm9lc19vbmUsIHNlbGYuY2FzZV9vbmVfYXR0ciwgc2VsZi5jYXNlX29uZV9zY29yZSkpDQogICAgICAgICAgICBpZiBhbGwoW2FucyAhPSBOb25lLCB2YWxpZGF0ZV9maW5kX2hlcm8oc2VsZi5oZXJvZXNfb25lLCBzZWxmLmNhc2Vfb25lX2F0dHIsIHNlbGYuY2FzZV9vbmVfc2NvcmUpICE9IE5vbmVdKToNCiAgICAgICAgICAgICAgICBzZWxmLmFzc2VydEVxdWFsKGFueSh4IGluIG1vbnN0ZXJzIGZvciB4IGluIGFucyksIEZhbHNlKQ0KDQogICAgZGVmIHRlc3RfdHdvKHNlbGYpOg0KICAgICAgICB3aXRoIHBhdGNoKCdidWlsdGlucy5pbnB1dCcsIHNpZGVfZWZmZWN0PXNlbGYuY2FzZV90d29faW5wdXQpOg0KICAgICAgICAgICAgYW5zID0gY3MuZmluZF9oZXJvKHNlbGYuY2FzZV90d29fYXR0ciwgc2VsZi5jYXNlX3R3b19zY29yZSkNCiAgICAgICAgICAgIG1vbnN0ZXJzID0gbGlzdF9tb25zdGVycyhzZWxmLmhlcm9lc190d28pDQogICAgICAgICAgICBzZWxmLmFzc2VydEVxdWFsKGFucywgdmFsaWRhdGVfZmluZF9oZXJvKHNlbGYuaGVyb2VzX3R3bywgc2VsZi5jYXNlX3R3b19hdHRyLCBzZWxmLmNhc2VfdHdvX3Njb3JlKSkNCiAgICAgICAgICAgIGlmIGFsbChbYW5zICE9IE5vbmUsIHZhbGlkYXRlX2ZpbmRfaGVybyhzZWxmLmhlcm9lc190d28sIHNlbGYuY2FzZV90d29fYXR0ciwgc2VsZi5jYXNlX3R3b19zY29yZSkgIT0gTm9uZV0pOg0KICAgICAgICAgICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwoYW55KHggaW4gbW9uc3RlcnMgZm9yIHggaW4gYW5zKSwgRmFsc2UpDQogICAgDQogICAgZGVmIHRlc3RfdGhyZWUoc2VsZik6DQogICAgICAgIHdpdGggcGF0Y2goJ2J1aWx0aW5zLmlucHV0Jywgc2lkZV9lZmZlY3Q9c2VsZi5jYXNlX3RocmVlX2lucHV0KToNCiAgICAgICAgICAgIGFucyA9IGNzLmZpbmRfaGVybyhzZWxmLmNhc2VfdGhyZWVfYXR0ciwgc2VsZi5jYXNlX3RocmVlX3Njb3JlKQ0KICAgICAgICAgICAgbW9uc3RlcnMgPSBsaXN0X21vbnN0ZXJzKHNlbGYuaGVyb2VzX3RocmVlKQ0KICAgICAgICAgICAgc2VsZi5hc3NlcnRFcXVhbChhbnMsIHZhbGlkYXRlX2ZpbmRfaGVybyhzZWxmLmhlcm9lc190aHJlZSwgc2VsZi5jYXNlX3RocmVlX2F0dHIsIHNlbGYuY2FzZV90aHJlZV9zY29yZSkpDQogICAgICAgICAgICBpZiBhbGwoW2FucyAhPSBOb25lLCB2YWxpZGF0ZV9maW5kX2hlcm8oc2VsZi5oZXJvZXNfdGhyZWUsIHNlbGYuY2FzZV90aHJlZV9hdHRyLCBzZWxmLmNhc2VfdGhyZWVfc2NvcmUpICE9IE5vbmVdKToNCiAgICAgICAgICAgICAgICBzZWxmLmFzc2VydEVxdWFsKGFueSh4IGluIG1vbnN0ZXJzIGZvciB4IGluIGFucyksIEZhbHNlKQ0KDQogICAgZGVmIHRlc3RfZm91cihzZWxmKToNCiAgICAgICAgd2l0aCBwYXRjaCgnYnVpbHRpbnMuaW5wdXQnLCBzaWRlX2VmZmVjdD1zZWxmLmNhc2VfZm91cl9pbnB1dCk6DQogICAgICAgICAgICBhbnMgPSBjcy5maW5kX2hlcm8oc2VsZi5jYXNlX2ZvdXJfYXR0ciwgc2VsZi5jYXNlX2ZvdXJfc2NvcmUpDQogICAgICAgICAgICBtb25zdGVycyA9IGxpc3RfbW9uc3RlcnMoc2VsZi5oZXJvZXNfZm91cikNCiAgICAgICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwoYW5zLCB2YWxpZGF0ZV9maW5kX2hlcm8oc2VsZi5oZXJvZXNfZm91ciwgc2VsZi5jYXNlX2ZvdXJfYXR0ciwgc2VsZi5jYXNlX2ZvdXJfc2NvcmUpKQ0KICAgICAgICAgICAgaWYgYWxsKFthbnMgIT0gTm9uZSwgdmFsaWRhdGVfZmluZF9oZXJvKHNlbGYuaGVyb2VzX2ZvdXIsIHNlbGYuY2FzZV9mb3VyX2F0dHIsIHNlbGYuY2FzZV9mb3VyX3Njb3JlKSAhPSBOb25lXSk6DQogICAgICAgICAgICAgICAgc2VsZi5hc3NlcnRFcXVhbChhbnkoeCBpbiBtb25zdGVycyBmb3IgeCBpbiBhbnMpLCBGYWxzZSkNCg0KaWYgX19uYW1lX18gPT0gJ19fbWFpbl9fJzoNCiAgICB1bml0dGVzdC5tYWluKCk="""
-eval(compile(base64.b64decode(code), '<string>', 'exec'))
+'''Tester for CS01'''
+from random import randint
+import unittest
+from unittest.mock import patch
+from itertools import chain
+
+import cs01 as cs
+
+names = []
+
+with open('dict.txt') as f:
+    names = f.readlines()
+
+def generate_errormancer():
+    return randint(1,4), randint(1,30)
+
+def validate_find_hero(heroes, attr, score):
+    valid = []
+    for hero in heroes:
+        if heroes[hero][attr-1] >= score:
+            if not heroes[hero][attr-1] > 30:
+                valid.append(hero)
+    if valid == []:
+        return None
+    return valid
+
+def list_monsters(heroes):
+    monsters = []
+    for hero in heroes:
+        for attrib in heroes[hero]:
+            if int(attrib) >= 31:
+                monsters.append(hero)
+    if monsters == None:
+        return [0]
+    return monsters
+
+def gen_char():
+    return names.pop(randint(1,len(names))-1).removesuffix('\n'), [randint(1,30), randint(1,30), randint(1,30), randint(1,30)]
+
+def make_char_list(number):
+    characters = dict()
+    if number < 1:
+        return None
+    for _ in range(number):
+        name, stats = gen_char()
+        characters[name] = stats
+    return characters
+
+def convert_to_list(entries):
+    final_list = []
+    for entry in entries:
+        s = entry + ',' + ','.join(str(x) for x in entries[entry])
+        final_list.append(s)
+    return final_list
+
+""" heroes = make_char_list(10)
+attr, score = generate_errormancer()
+print(validate_find_hero(heroes, attr, score))
+convert_to_list(heroes) """
+
+class TestCoderSaga(unittest.TestCase):
+    
+    def __init__(self, *args, **kwargs):
+        super(TestCoderSaga, self).__init__(*args, **kwargs)
+
+        self.heroes_one = make_char_list(9)
+        self.heroes_one.update(Brave = [30,30,30,30])
+        self.heroes_two = make_char_list(10)
+        self.heroes_two.update(NotAMonster = [31,31,31,31])
+        self.heroes_three = make_char_list(999)
+        self.heroes_four = make_char_list(998)
+        self.heroes_four.update(DemonLord = [100, 100, 100, 100])
+        
+        self.case_one_input = list(chain(['10'], convert_to_list(self.heroes_one)))
+        self.case_two_input = list(chain(['11'], convert_to_list(self.heroes_two)))
+        self.case_three_input = list(chain(['999'], convert_to_list(self.heroes_three)))
+        self.case_four_input = list(chain(['999'], convert_to_list(self.heroes_four)))
+
+        self.case_one_attr, self.case_one_score = generate_errormancer()
+        self.case_two_attr, self.case_two_score = generate_errormancer()
+        self.case_three_attr, self.case_three_score = generate_errormancer()
+        self.case_four_attr, self.case_four_score = generate_errormancer()
+
+    def test_one(self):
+        with patch('builtins.input', side_effect=self.case_one_input):
+            ans = cs.find_hero(self.case_one_attr, self.case_one_score)
+            monsters = list_monsters(self.heroes_one)
+            self.assertEqual(ans, validate_find_hero(self.heroes_one, self.case_one_attr, self.case_one_score))
+            if all([ans != None, validate_find_hero(self.heroes_one, self.case_one_attr, self.case_one_score) != None]):
+                self.assertEqual(any(x in monsters for x in ans), False)
+
+    def test_two(self):
+        with patch('builtins.input', side_effect=self.case_two_input):
+            ans = cs.find_hero(self.case_two_attr, self.case_two_score)
+            monsters = list_monsters(self.heroes_two)
+            self.assertEqual(ans, validate_find_hero(self.heroes_two, self.case_two_attr, self.case_two_score))
+            if all([ans != None, validate_find_hero(self.heroes_two, self.case_two_attr, self.case_two_score) != None]):
+                self.assertEqual(any(x in monsters for x in ans), False)
+    
+    def test_three(self):
+        with patch('builtins.input', side_effect=self.case_three_input):
+            ans = cs.find_hero(self.case_three_attr, self.case_three_score)
+            monsters = list_monsters(self.heroes_three)
+            self.assertEqual(ans, validate_find_hero(self.heroes_three, self.case_three_attr, self.case_three_score))
+            if all([ans != None, validate_find_hero(self.heroes_three, self.case_three_attr, self.case_three_score) != None]):
+                self.assertEqual(any(x in monsters for x in ans), False)
+
+    def test_four(self):
+        with patch('builtins.input', side_effect=self.case_four_input):
+            ans = cs.find_hero(self.case_four_attr, self.case_four_score)
+            monsters = list_monsters(self.heroes_four)
+            self.assertEqual(ans, validate_find_hero(self.heroes_four, self.case_four_attr, self.case_four_score))
+            if all([ans != None, validate_find_hero(self.heroes_four, self.case_four_attr, self.case_four_score) != None]):
+                self.assertEqual(any(x in monsters for x in ans), False)
+
+if __name__ == '__main__':
+    unittest.main()
