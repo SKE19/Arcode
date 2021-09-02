@@ -135,9 +135,9 @@ foo@bar:~$ py cs01_test.py
 When running the tester file, if it invoked a FileNotFound for 'dict.txt,' you should point 'dict.txt' file to exact path instead.
 Edit in **cs01_test.py**
 ```python
-# ...
+# ... line 9
 file_path = 'dict.txt'
-# ...
+# ... line 11
 ```
 
 ## Special Thanks
