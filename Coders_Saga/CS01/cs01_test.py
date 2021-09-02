@@ -7,8 +7,9 @@ from itertools import chain
 import cs01 as cs
 
 names = []
+file_path = 'dict.txt' # Point to dict.txt here. 
 
-with open('dict.txt') as f:
+with open(file_path) as f:
     names = f.readlines()
 
 def generate_errormancer():
