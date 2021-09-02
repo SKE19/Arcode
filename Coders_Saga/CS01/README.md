@@ -129,3 +129,15 @@ def find_hero(attribute, score):
 ```console
 foo@bar:~$ py cs01_test.py
 ```
+
+## Known Issues
+
+When running the tester file, if it invoked a FileNotFound for 'dict.txt,' you should point 'dict.txt' file to exact path instead.
+```python
+# ...
+file_path = 'dict.txt'
+# ...
+```
+
+## Special Thanks
+[Godiez1](https://github.com/Godiez1) for pointing out the FileNotFoundError issue.
